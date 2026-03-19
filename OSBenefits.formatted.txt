@@ -1,0 +1,125 @@
+﻿% START OF SYSTEM OUTPUT
+% Types
+tff(os_type,type,
+    os: $tType ).
+
+
+tff(origin_type,type,
+    origin: $tType ).
+
+
+tff(comp_type,type,
+    computer: $tType ).
+
+
+% Constants
+tff(linux_decl,type,
+    linux: os ).
+
+
+tff(windows_decl,type,
+    windows: os ).
+
+
+tff(osx_decl,type,
+    osx: os ).
+
+
+tff(unix_decl,type,
+    unix: origin ).
+
+
+tff(dos_decl,type,
+    dos: origin ).
+
+
+tff(mycomp_decl,type,
+    mycomputer: computer ).
+
+
+% Predicates
+tff(origin_pred,type,
+    origin_of: ( os * origin ) > $o ).
+
+
+tff(runs_pred,type,
+    runs: ( computer * os ) > $o ).
+
+
+tff(benefits_pred,type,
+    benefits: ( computer * origin ) > $o ).
+
+
+% Linux, Windows, and OSX are the only operating systems
+tff(only_os,axiom,
+    ! [O: os] :
+      ( ( O = linux )
+      | ( O = windows )
+      | ( O = osx ) ) ).
+
+
+% They are all different
+tff(os_diff_1,axiom,
+    linux != windows ).
+
+
+tff(os_diff_2,axiom,
+    linux != osx ).
+
+
+tff(os_diff_3,axiom,
+    windows != osx ).
+
+
+% UNIX and DOS are the only origins
+tff(only_origins,axiom,
+    ! [R: origin] :
+      ( ( R = unix )
+      | ( R = dos ) ) ).
+
+
+% They are different
+tff(origin_diff,axiom,
+    unix != dos ).
+
+
+% Origin facts
+tff(linux_origin,axiom,
+    origin_of(linux,unix) ).
+
+
+tff(osx_origin,axiom,
+    origin_of(osx,unix) ).
+
+
+tff(windows_origin,axiom,
+    origin_of(windows,dos) ).
+
+
+% All computers run one or more operating systems
+tff(all_computers_run_os,axiom,
+    ! [C: computer] :
+    ? [O: os] : runs(C,O) ).
+
+
+% A computer benefits from the origins of the operating systems that it runs
+tff(benefit_rule,axiom,
+    ! [C: computer,O: os,R: origin] :
+      ( ( runs(C,O)
+        & origin_of(O,R) )
+     => benefits(C,R) ) ).
+
+
+% My computer runs OSX
+tff(my_run,axiom,
+    runs(mycomputer,osx) ).
+
+
+% Goal
+tff(goal,conjecture,
+    benefits(mycomputer,unix) ).
+
+
+% END OF SYSTEM OUTPUT
+% RESULT: SOT_ARiqfA - TPTP4X---0.0 says Unknown - CPU = 0.00 WC = 0.01 
+% OUTPUT: SOT_ARiqfA - TPTP4X---0.0 says None - CPU = 0 WC = 0

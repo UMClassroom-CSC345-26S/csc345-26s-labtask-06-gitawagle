@@ -1,0 +1,64 @@
+﻿# SZS output start CNFRefutation
+tff(decl_sort1, type, os: $tType).
+tff(decl_sort2, type, origin: $tType).
+tff(decl_sort3, type, computer: $tType).
+tff(decl_25, type, osx: os).
+tff(decl_26, type, unix: origin).
+tff(decl_28, type, mycomputer: computer).
+tff(decl_29, type, origin_of: (os * origin) > $o).
+tff(decl_30, type, runs: (computer * os) > $o).
+tff(decl_31, type, benefits: (computer * origin) > $o).
+
+
+tff(goal, conjecture, benefits(mycomputer,unix)).
+tff(benefit_rule, axiom,
+    ![X3:computer, X1:os, X2:origin]:
+      ((runs(X3,X1) & origin_of(X1,X2)) => benefits(X3,X2))).
+
+
+tff(my_run, axiom,
+    runs(mycomputer,osx)).
+
+
+tff(osx_origin, axiom,
+    origin_of(osx,unix)).
+
+
+tff(c_0_4, negated_conjecture,
+    ~benefits(mycomputer,unix)).
+
+
+tff(c_0_5, plain,
+    ![X4:computer, X5:os, X6:origin]:
+      ((~runs(X4,X5) | ~origin_of(X5,X6) | benefits(X4,X6)))).
+
+
+tff(c_0_6, negated_conjecture,
+    ~benefits(mycomputer,unix)).
+
+
+tcf(c_0_7, plain,
+    ![X1:os,X3:computer,X2:origin]:
+      (benefits(X3,X2) | ~runs(X3,X1) | ~origin_of(X1,X2))).
+
+
+tcf(c_0_8, plain,
+    runs(mycomputer,osx)).
+
+
+tcf(c_0_9, negated_conjecture,
+    ~benefits(mycomputer,unix)).
+
+
+tcf(c_0_10, plain,
+    ![X2:origin]:
+      (benefits(mycomputer,X2) | ~origin_of(osx,X2))).
+
+
+tcf(c_0_11, plain,
+    origin_of(osx,unix)).
+
+
+cnf(c_0_12, negated_conjecture,
+    ($false)).
+# SZS output end CNFRefutation

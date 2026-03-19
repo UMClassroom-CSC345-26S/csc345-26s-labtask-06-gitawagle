@@ -1,0 +1,104 @@
+﻿% START OF SYSTEM OUTPUT
+Paradox, version 4.0, 2010-06-29.
++++ PROBLEM: /tmp/SystemOnTPTP2944793/SOT_eB7DlC.tptp:short
+Reading '/tmp/SystemOnTPTP2944793/SOT_eB7DlC.tptp:short' ... OK
++++ SOLVING: /tmp/SystemOnTPTP2944793/SOT_eB7DlC.tptp:short
++++ BEGIN MODEL
+SZS output start FiniteModel for /tmp/SystemOnTPTP2944793/SOT_eB7DlC.tptp:short
+% domain size is 3
+fof(domain, fi_domain,
+  (![X] : (X = "1" | X = "2" | X = "3"))
+).
+
+
+fof(benefits, fi_predicates,
+  ( ![X1,X2] : (benefits(X1,X2) <=> $true)
+  )
+).
+
+
+fof(dos, fi_functors,
+  ( (dos = "1")
+  )
+).
+
+
+fof(is_origin, fi_predicates,
+  ( (is_origin("1") <=> $true)
+  & (is_origin("2") <=> $true)
+  & (is_origin("3") <=> $false)
+  )
+).
+
+
+fof(is_os, fi_predicates,
+  ( (is_os("1") <=> $true)
+  & (is_os("2") <=> $true)
+  & (is_os("3") <=> $true)
+  )
+).
+
+
+fof(linux, fi_functors,
+  ( (linux = "2")
+  )
+).
+
+
+fof(origin_of, fi_predicates,
+  ( ![X1,X2] : (origin_of(X1,X2) <=> $true)
+  )
+).
+
+
+fof(osx, fi_functors,
+  ( (osx = "1")
+  )
+).
+
+
+fof(runs, fi_predicates,
+  ( ![X1,X2] : (runs(X1,X2) <=> $true)
+  )
+).
+
+
+fof(sK0_types6_X, fi_functors,
+  ( (sK0_types6_X = "2")
+  )
+).
+
+
+fof(sK1_types7_X, fi_functors,
+  ( (sK1_types7_X = "1")
+  )
+).
+
+
+fof(sK4_all_computers_run_os_O, fi_functors,
+  ( (sK4_all_computers_run_os_O("1") = "1")
+  & (sK4_all_computers_run_os_O("2") = sK4_all_computers_run_os_O("1"))
+  & (sK4_all_computers_run_os_O("3") = sK4_all_computers_run_os_O("2"))
+  )
+).
+
+
+fof(unix, fi_functors,
+  ( (unix = "2")
+  )
+).
+
+
+fof(windows, fi_functors,
+  ( (windows = "3")
+  )
+).
+SZS output end FiniteModel for /tmp/SystemOnTPTP2944793/SOT_eB7DlC.tptp:short
++++ END MODEL
++++ RESULT: Satisfiable
+SZS status Satisfiable for /tmp/SystemOnTPTP2944793/SOT_eB7DlC.tptp:short
+
+
+% END OF SYSTEM OUTPUT
+% RESULT: SOT_eB7DlC - Paradox---4.0 says Satisfiable - CPU = 0.00 WC = 0.01  Size = 3
+% OUTPUT: SOT_eB7DlC - Paradox---4.0 says FiniteModel - CPU = 0.00 WC = 0.01
